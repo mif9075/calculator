@@ -1,5 +1,6 @@
 let numbers = '';
 let numbers2 = '';
+let operator = '';
 let numbersArray = [];
 
 window.onload = init;
@@ -11,11 +12,9 @@ function init() {
 
 
 //Other Event Listeners
-    document.querySelector('.keyOperator')
-        .addEventListener('click', operation);
 
     document.querySelector('.clear')
-        .addEventListener('click', clear);
+        .addEventListener('click', clearUL);
 
     document.querySelector('.keyEqual')
         .addEventListener('click', result);
@@ -24,15 +23,41 @@ function init() {
 function numberKeys (event) {
     event.preventDefault();
     let number = event.target.innerText;
+
+    numbersArray = Array.from(document.querySelectorAll('.keyOperator'));
+    numbersArray.forEach(function(element) {element.addEventListener('click', operation);});
+
+    if (operator === '') {
     numbers = numbers.concat(number);
-    console.log(numbers);
     clearUL();
-    addToUL(numbers);
+    addToUL(numbers);}
+    else {
+        numbersArray = Array.from(document.querySelectorAll('.keyOperator'));
+        numbersArray.forEach(function(element) {element.addEventListener('click', operation);});
+    }
+
+    
 }
 
 function operation(event) {
     event.preventDefault();
+    operator = event.target.innerText;
+
+    numbersArray = Array.from(document.querySelectorAll('.number'));
+    numbersArray.forEach(function(element) {element.addEventListener('click', numberKeys2);});
 }
+
+function numberKeys2 (event) {
+    event.preventDefault();
+    let number2 = event.target.innerText;
+    numbers2 = numbers2.concat(number2);
+    clearUL();
+    addToUL(numbers2);
+
+    
+    
+}
+
 
 function clear(event) {
     event.preventDefault();
@@ -64,7 +89,6 @@ function addToAll(event) {
         }
     }  
     // Update our html.
-    console.log(numbers);
     updateUL();
 }
 
@@ -86,7 +110,6 @@ function subtractFromAll(event) {
         }
     }
     // Update our html.
-    console.log(numbers);
     updateUL();
 }
 
@@ -109,7 +132,6 @@ function multiplyByAll(event) {
     }
     }
     // Update our html.
-    console.log(numbers);
     updateUL();
 }
 
@@ -131,7 +153,6 @@ function divideFromAll(event) {
         }
     }
     // Update our html.
-    console.log(numbers);
     updateUL();
 }
 
@@ -165,4 +186,6 @@ function addToUL(numberToAppend) {
     newLI.innerText = numberToAppend;
     UL.appendChild(newLI);
 }
+
+
 
