@@ -58,20 +58,25 @@ function numberKeys2 (event) {
 
 function clear(event) {
     event.preventDefault();
+    clearUL();
+    numbers = "";
+    numbers2 = "";
+    operator = "";
+    addtoUL(numbers); 
 }
 
 function result(event) {
     event.preventDefault();
 
     if (operator === '-') {
-    result = numbers - numbers2;
-    clearUL();
-    addToUL(result);
+        result = numbers - numbers2;
+        clearUL();
+        addToUL(result);
 } 
     else if (operator === '+') {
-    result = parseFloat(numbers) + parseFloat(numbers2);
-    clearUL();
-    addToUL(result);
+        result = parseFloat(numbers) + parseFloat(numbers2);
+        clearUL();
+        addToUL(result);
 }
     
     else if (operator === '÷') {
@@ -94,18 +99,12 @@ function result(event) {
 # ========================================================
 */
 
-// function updateUL() {
-//     clearUL();
-//     for(let i = 0; i < numbers.length; i++) {
-//         addToUL(numbers[i]);
-//     }
-// }
-
 function clearUL() {
     const ul = document.querySelector('.calculatorDisplay');
     while(ul.hasChildNodes()) {
         ul.removeChild(ul.firstChild);
     }
+    
 }
 
 // Append to the UL.
