@@ -87,53 +87,6 @@ function result(event) {
 }
 
 }
-//Old Code from Previous Projects
-
-function multiplyByAll(event) {
-    // Make sure page doesn't reload on button press.
-    event.preventDefault();
-    
-    // Grab value to multiply.
-    let numberToMultiply = document.querySelector('#numberForMath').value;
-
-    if(isNaN(numberToMultiply) || numberToMultiply===''){
-        resetInput();
-    }
-    
-    else{
-        
-    // Grab value to Multiply.
-    for(let i = 0; i < numbers.length; i++) {
-        numbers[i] = parseFloat(numbers[i]) * parseFloat(numberToMultiply);
-    }
-    }
-    // Update our html.
-    updateUL();
-}
-
-function divideFromAll(event) {
-    // Make sure page doesn't reload on button press.
-    event.preventDefault();
-
-    // Grab value to divide.
-    let numberToDivide = document.querySelector('#numberForMath').value;
-    if(isNaN(numberToDivide)  || numberToDivide === ''){
-        resetInput();
-    }
-    
-    else{
-
-    // Divide value from everything on the list.
-    for(let i = 0; i < numbers.length; i++) {
-        numbers[i] = parseFloat(numbers[i]) / parseFloat(numberToDivide);
-        }
-    }
-    // Update our html.
-    updateUL();
-}
-
-//Old Codes
-
 
 /*
 # ========================================================
