@@ -25,8 +25,9 @@ function numberKeys (event) {
     event.preventDefault();
     let number = event.target.innerText;
     numbers = numbers.concat(number);
-    // console.log(number);
     console.log(numbers);
+    clearUL();
+    addToUL(numbers);
 }
 
 function operation(event) {
@@ -143,15 +144,15 @@ function divideFromAll(event) {
 # ========================================================
 */
 
-function updateUL() {
-    clearUL();
-    for(let i = 0; i < numbers.length; i++) {
-        addToUL(numbers[i]);
-    }
-}
+// function updateUL() {
+//     clearUL();
+//     for(let i = 0; i < numbers.length; i++) {
+//         addToUL(numbers[i]);
+//     }
+// }
 
 function clearUL() {
-    const ul = document.querySelector('#number-list');
+    const ul = document.querySelector('.calculatorDisplay');
     while(ul.hasChildNodes()) {
         ul.removeChild(ul.firstChild);
     }
@@ -159,8 +160,8 @@ function clearUL() {
 
 // Append to the UL.
 function addToUL(numberToAppend) {
-    const UL = document.querySelector('#number-list');
-    const newLI = document.createElement('li');
+    const UL = document.querySelector('.calculatorDisplay');
+    const newLI = document.createElement('p');
     newLI.innerText = numberToAppend;
     UL.appendChild(newLI);
 }
