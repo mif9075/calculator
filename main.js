@@ -10,14 +10,11 @@ function init() {
     numbersArray = Array.from(document.querySelectorAll('.number'));
     numbersArray.forEach(function(element) {element.addEventListener('click', numberKeys);});
 
-
 //Other Event Listeners
 
     document.querySelector('.clear')
         .addEventListener('click', clearUL);
 
-    document.querySelector('.keyEqual')
-        .addEventListener('click', result);
 }
 
 function numberKeys (event) {
@@ -35,7 +32,6 @@ function numberKeys (event) {
         numbersArray = Array.from(document.querySelectorAll('.keyOperator'));
         numbersArray.forEach(function(element) {element.addEventListener('click', operation);});
     }
-
     
 }
 
@@ -54,8 +50,9 @@ function numberKeys2 (event) {
     clearUL();
     addToUL(numbers2);
 
-    
-    
+    document.querySelector('.keyEqual')
+        .addEventListener('click', result);
+
 }
 
 
@@ -65,9 +62,19 @@ function clear(event) {
 
 function result(event) {
     event.preventDefault();
+
+    if (operator === '-') {
+    result = numbers - numbers2;
+    clearUL();
+    addToUL(result);
+} 
+    else if (operator === '+') {
+    result = numbers + numbers2;
+    clearUL();
+    addToUL(result);
 }
 
-
+}
 //Old Code from Previous Projects
 
 function addToAll(event) {
