@@ -1,28 +1,24 @@
 let numbers = '';
+let numbers2 = '';
 let numbersArray = [];
 
 window.onload = init;
 
 function init() {
-    document.querySelector('.keyOperator')
-        .addEventListener('click', operation);
-
-
-     numbersArray = Array.from(document.querySelectorAll('.number'));
-
-    //  console.log(numbersArray);
-    
+//Number Keys Event Listener
+    numbersArray = Array.from(document.querySelectorAll('.number'));
     numbersArray.forEach(function(element) {element.addEventListener('click', numberKeys);});
 
 
+//Other Event Listeners
+    document.querySelector('.keyOperator')
+        .addEventListener('click', operation);
+
     document.querySelector('.clear')
         .addEventListener('click', clear);
+
     document.querySelector('.keyEqual')
         .addEventListener('click', result);
-}
-
-function operation(event) {
-    event.preventDefault();
 }
 
 function numberKeys (event) {
@@ -31,6 +27,10 @@ function numberKeys (event) {
     numbers = numbers.concat(number);
     // console.log(number);
     console.log(numbers);
+}
+
+function operation(event) {
+    event.preventDefault();
 }
 
 function clear(event) {
@@ -132,5 +132,36 @@ function divideFromAll(event) {
     // Update our html.
     console.log(numbers);
     updateUL();
+}
+
+//Old Codes
+
+
+/*
+# ========================================================
+# = HTML Management
+# ========================================================
+*/
+
+function updateUL() {
+    clearUL();
+    for(let i = 0; i < numbers.length; i++) {
+        addToUL(numbers[i]);
+    }
+}
+
+function clearUL() {
+    const ul = document.querySelector('#number-list');
+    while(ul.hasChildNodes()) {
+        ul.removeChild(ul.firstChild);
+    }
+}
+
+// Append to the UL.
+function addToUL(numberToAppend) {
+    const UL = document.querySelector('#number-list');
+    const newLI = document.createElement('li');
+    newLI.innerText = numberToAppend;
+    UL.appendChild(newLI);
 }
 
