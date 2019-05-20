@@ -69,56 +69,25 @@ function result(event) {
     addToUL(result);
 } 
     else if (operator === '+') {
-    result = numbers + numbers2;
+    result = parseFloat(numbers) + parseFloat(numbers2);
     clearUL();
     addToUL(result);
+}
+    
+    else if (operator === '÷') {
+        result = parseFloat(numbers) / parseFloat(numbers2);
+        clearUL();
+        addToUL(result); 
+}
+
+    else {
+        result = parseFloat(numbers) * parseFloat(numbers2);
+        clearUL();
+        addToUL(result); 
 }
 
 }
 //Old Code from Previous Projects
-
-function addToAll(event) {
-    // Make sure page doesn't reload on button press.
-    event.preventDefault();
-
-    // Grab value to add.
-
-    let numberToAdd = document.querySelector('#numberForMath').value;
-
-    if(isNaN(numberToAdd)  || numberToAdd===''){
-        resetInput();
-    }
-    
-    else{
-    // Add value to everything on the list.
-    for(let i = 0; i < numbers.length; i++) {
-        numbers[i] = parseFloat(numbers[i]) + parseFloat(numberToAdd);
-        }
-    }  
-    // Update our html.
-    updateUL();
-}
-
-function subtractFromAll(event) {
-    // Make sure page doesn't reload on button press.
-    event.preventDefault();
-    
-    // Grab value to subtract.
-    let numberToSubtract = document.querySelector('#numberForMath').value;
-    
-    if(isNaN(numberToSubtract)  || numberToSubtract===''){
-        resetInput();
-    }
-    
-    else{
-    // Subtract value to everything on the list.
-    for(let i = 0; i < numbers.length; i++) {
-        numbers[i] = parseFloat(numbers[i]) - parseFloat(numberToSubtract);
-        }
-    }
-    // Update our html.
-    updateUL();
-}
 
 function multiplyByAll(event) {
     // Make sure page doesn't reload on button press.
